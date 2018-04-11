@@ -1,6 +1,6 @@
-# Code Examples for Lecture 8
+# CUDA Code Examples
 
 - [window_sum.cu](window_sum.cu) CUDA kernels for sliding window sum.
 
 ## Links
-- [Lecture 8 Slides](http://dlsys.cs.washington.edu/pdf/lecture8.pdf)
+- [Lecture 5 Slides](http://dlsys.cs.washington.edu/pdf/lecture5.pdf)
