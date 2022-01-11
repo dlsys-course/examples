@@ -23,10 +23,13 @@ __global__ void windowSumKernel(const float* A, float* B, int n) {
   int in_index = out_index + RADIUS;
   int local_index = threadIdx.x + RADIUS;
   if (out_index < n) {
+    // compute the number of elements of every blocks
+    int num = min(THREADS_PER_BLOCK, n - blockIdx.x * blockDim.x);
     temp[local_index] = A[in_index];
     if (threadIdx.x < RADIUS) {
       temp[local_index - RADIUS] = A[in_index - RADIUS];
-      temp[local_index + THREADS_PER_BLOCK] = A[in_index +  THREADS_PER_BLOCK];
+      // use correct offset
+      temp[local_index + num] = A[in_index +  num];
     }
     __syncthreads();
     float sum = 0.;
